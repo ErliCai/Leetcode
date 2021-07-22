@@ -14,19 +14,18 @@ class Solution(object):
         self.flatten_helper(root)
         
     def flatten_helper(self, root):
-        print(root)
 
-        if not root.left and not root.right:
+        if (not root.left) and (not root.right):
             return root
-        elif not root.left and root.right:
+        elif (not root.left) and root.right:
             return self.flatten(root.right)
-        elif root.left and not root.right:
+        elif root.left and (not root.right):
             root.left, root.right = None, root.left
             return self.flatten(root.right)
         else:
-            node1 = self.flatten(root.left)
-            node2 = self.flatten(root.right)
-            root.right, node1.right = root.left, root.right
+            node1 = self.flatten_helper(root.left)
+            node2 = self.flatten_helper(root.right)
+            root.left, root.right, node1.left, node1.right = None, root.left, None, root.right
             return node2
 
         
