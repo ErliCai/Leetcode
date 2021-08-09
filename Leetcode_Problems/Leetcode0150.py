@@ -1,29 +1,36 @@
-import operator
+from os import error
 
-class Solution:
+
+class Solution(object):
     def evalRPN(self, tokens):
+        """
+        :type tokens: List[str]
+        :rtype: int
+        """
         
-        ops = {"+" : operator.add, "-" : operator.sub,
-            "/" : operator.truediv, "*" : operator.mul}
+        def cal(a,b,o):
+            if o == "+":
+                return a + b
+            if o == "-":
+                return a - b
+            if o == "*":
+                return a * b
+            if o == "/":
+                return a / b
 
-        operators = "+-*/"
-        stack = []
-        while tokens:
-            a = tokens.pop()
-            if a in operators:
-                stack.append(a)
+        stack = ["dummy"]
+        operators = set(["+","-","*","/"])
+        for t in tokens[::-1]:
+            if t in operators:
+                stack.append(t)
             else:
-                if len(stack) >= 2 and stack[-2] in operators:
+                stack.append(int(t))
+                while stack[-2] not in operators:
+                    a = stack.pop()
                     b = stack.pop()
                     o = stack.pop()
-                    c = str(ops[o](int(b), int(a)))
-                    tokens.append(c)
-                else:
-                    stack.append(a)
-            #print(tokens, stack)
-            
-        return stack[0]
+                    stack.append(cal(a, b, o))
 
-S = Solution()
-tokens = ["2","1","+","3","*"]
-print(S.evalRPN(tokens))
+        return stack[1]
+
+print( 6 // 132)

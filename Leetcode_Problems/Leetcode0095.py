@@ -65,7 +65,7 @@ class Solution(object):
 
     def treesFromList(self, lst):
 
-        if not list:
+        if not lst:
             return [[]]
         else:
             ans = []
