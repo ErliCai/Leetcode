@@ -38,3 +38,24 @@ S = Solution()
 nums = [-5,-3,-2,-1]
 result = S.sortedSquares(nums)
 print(result)
+
+
+
+class Solution2(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        low, high = 0, len(nums) - 1
+        ans = []
+        while low <= high:
+            if abs(nums[low]) <= nums[high]:
+                ans.append(nums[high] ** 2)
+                high -= 1
+            else:
+                ans.append(nums[low] ** 2)
+                low += 1
+
+        return ans[::-1]

@@ -49,9 +49,38 @@ class Solution(object):
         return answer
 
 
-accounts = [["David","David0@m.co","David1@m.co"],["David","David3@m.co","David4@m.co"],["David","David4@m.co","David5@m.co"],["David","David2@m.co","David3@m.co"],["David","David1@m.co","David2@m.co"]]
-S = Solution()
-#S.accountsMerge(accounts)
-print(S.accountsMerge(accounts))
+class Solution3(object):
 
+    def __init__(self, name) -> None:
+        self.name = name
 
+    def accountsMerge(self, accounts):
+        """
+        :type accounts: List[List[str]]
+        :rtype: List[List[str]]
+        """
+        self.accountsMerge(accounts[:3])
+        
+        def find():
+            return
+
+        def union():
+            return
+
+    def WhatstheName(self):
+        return self.name
+
+S = Solution3("CAI")
+S2 = Solution3("XUE")
+print(S.WhatstheName())
+
+# accounts = [["David","David0@m.co","David1@m.co"],["David","David3@m.co","David4@m.co"],["David","David4@m.co","David5@m.co"],["David","David2@m.co","David3@m.co"],["David","David1@m.co","David2@m.co"]]
+# S = Solution3()
+# S.accountsMerge(accounts)
+# print(S.accountsMerge(accounts))
+
+# a = list([4,1,2,3])
+# a = [4,1,2,3]
+# a.sort()
+
+# b = [4,1,2,3,5]
