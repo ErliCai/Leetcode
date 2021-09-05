@@ -6,3 +6,12 @@ class Solution(object):
         :rtype: List[int]
         """
         
+        i, j = 0, len(numbers) - 1
+        while i < j:
+            num1, num2 = numbers[i], numbers[j]
+            if num1 + num2 < target:
+                i += 1
+            elif num1 + num2 > target:
+                j -= 1
+            else:
+                return i, j

@@ -55,3 +55,21 @@ class Solution2(object):
             return r
         else:
             return root1 or root2
+
+
+class Solution3(object):
+    def mergeTrees(self, root1, root2):
+        """
+        :type root1: TreeNode
+        :type root2: TreeNode
+        :rtype: TreeNode
+        """
+
+        if not root1 and not root2:
+            return None
+        elif root1 and not root2:
+            return TreeNode(root1.val, self.mergeTrees(root1.left, None), self.mergeTrees(root1.right, None))
+        elif root2 and not root1:
+            return TreeNode(root2.val,self.mergeTrees(root2.left, None), self.mergeTrees(root2.right, None))
+        else:
+            return TreeNode(root1.val+root2.val, self.mergeTrees(root1.left, root2.left), self.mergeTrees(root1.right, root2.right))

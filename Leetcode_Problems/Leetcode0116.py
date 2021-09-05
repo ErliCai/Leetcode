@@ -33,3 +33,23 @@ class Solution(object):
             level = next_level
 
         return root
+
+
+class Solution(object):
+    def connect(self, root):
+        """
+        :type root: Node
+        :rtype: Node
+        """
+
+        level = [root,None]
+        while len(level) > 1:
+            next_level = []
+            for i in range(len(level) - 1):
+                level[i].next = level[i+1]
+                if level[i].left:
+                    next_level.append(level[i].left)
+                if level[i].right:
+                    next_level.append(level[i].right)
+
+            level = next_level + [None]
